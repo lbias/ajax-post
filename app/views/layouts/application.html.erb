@@ -3,12 +3,20 @@
   <head>
     <title>AjaxPosting</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container-fluid">
+      <%= render "common/navbar" %>
+      <%= link_to "jQuery demo-1", jquery_1_path %> |
+      <%= link_to "jQuery demo-2", jquery_2_path %> |
+      <%= link_to "jQuery demo-3", jquery_3_path %> |
+      <%= link_to "jQuery demo-4", jquery_4_path %> |
+      <%= link_to "jQuery demo-5", jquery_5_path %>
+      <%= yield %>
+    </div>
+    <%= render "common/footer" %>
   </body>
 </html>
