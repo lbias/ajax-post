@@ -91,8 +91,12 @@
         $(that).after( $(' <img src="/images/ajax-loader.gif" id="ajax-loading"> ') );
       },
       complete: function(){
-        $("#ajax-loading").remove();  
+        $("#ajax-loading").remove();
       }
     });
   });
+</script>
+
+<script>
+  $(".raty").raty( { path: '/images/' } );
 </script>
