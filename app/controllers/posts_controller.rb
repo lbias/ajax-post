@@ -19,6 +19,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    sleep(1)
     @post = Post.find(params[:id])
     @post.update!( post_params )
     render :json => { :id => @post.id, :message => "ok"}
@@ -53,6 +54,17 @@ class PostsController < ApplicationController
     end
     @post.save!
     render :json => { :message => "ok", :flag_at => @post.flag_at, :id => @post.id }
+  end
+
+  def rate
+    @post = Post.find(params[:id])
+    existing_score = @post.find_score(current_user)
+    if existing_score
+      existing_score.update( :score => params[:score] )
+    else
+      @post.scores.create( :score => params[:score], :user => current_user )
+    end
+    render :json => { :average_score => @post.average_score }
   end
 
   protected
